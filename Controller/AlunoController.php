@@ -5,8 +5,21 @@ namespace App\Controller;
 use App\Model\Aluno;
 use Exception;
 
+/**
+ * Classe AlunoController
+ * Responsável por controlar as operações relacionadas aos alunos.
+ */
+
 final class AlunoController extends Controller
 {
+
+    /**
+     * Método responsável por listar todos os alunos.
+     * Chama a função de busca no modelo e renderiza a lista.
+     *
+     * @return void
+     */
+
     public static function index() : void 
     {
         parent::isProtected();
@@ -24,6 +37,14 @@ final class AlunoController extends Controller
         parent::render('Aluno/lista_aluno.php', $model);
     }
 
+    /**
+     * Método responsável por cadastrar ou editar um aluno.
+     * Verifica se a requisição é do tipo POST para salvar os dados.
+     * Caso contrário, verifica se há um ID para edição.
+     *
+     * @return void
+     */
+    
     public static function cadastro() : void 
     {
         parent::isProtected();

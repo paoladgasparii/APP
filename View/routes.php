@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * Define as rotas da aplicação e direciona para os controladores correspondentes.
+ */
+
 use App\Controller\{
     AlunoController,
     InicialController,
@@ -14,94 +18,82 @@ $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
 switch ($url)
 {
-    case'/';
+    case '/':
         InicialController::index();
-    break;
+        break;
 
     /* Rotas para login */
-
-    case '/login';
+    case '/login':
         LoginController::index();
-    break;
+        break;
 
-    case '/logout';
+    case '/logout':
         LoginController::logout();
-    break;
+        break;
 
     /* Rotas para alunos */
-
-    case '/aluno';
+    case '/aluno':
         AlunoController::index();
-    break;
+        break;
 
-    case '/cadastro';
+    case '/cadastro':
+    case '/aluno/cadastro':
         AlunoController::cadastro();
-    break;
+        break;
 
-    case '/aluno/cadastro';
-        AlunoController::cadastro();
-    break;
-
-    case '/aluno/delete';
+    case '/aluno/delete':
         AlunoController::delete();
-    break;
+        break;
 
     /* Rotas para autores */
+    case '/autor':
+        AutorController::index();
+        break;
 
-    case '/autor';
-        AlunoController::index();
-    break;
+    case '/autor/cadastro':
+        AutorController::cadastro();
+        break;
 
-    case '/autor/cadastro';
-    AlunoController::cadastro();
-    break;
-
-    case '/autor/delete';
-    AlunoController::delete();
-    break;
+    case '/autor/delete':
+        AutorController::delete();
+        break;
 
     /* Rotas para categorias */
+    case '/categoria':
+        CategoriaController::index();
+        break;
 
-    case '/categoria';
-        AlunoController::index();
-    break;
+    case '/categoria/cadastro':
+        CategoriaController::cadastro();
+        break;
 
-    case '/categoria/cadastro';
-        AlunoController::cadastro();
-    break;
-
-    case '/categoria/delete';
-        AlunoController::delete();
-    break;
+    case '/categoria/delete':
+        CategoriaController::delete();
+        break;
 
     /* Rotas para livros */
+    case '/livro':
+        LivroController::index();
+        break;
 
-    case '/livro';
-        AlunoController::index();
-    break;
+    case '/livro/cadastro':
+        LivroController::cadastro();
+        break;
 
-    case '/livro/cadastro';
-        AlunoController::cadastro();
-    break;
+    case '/livro/delete':
+        LivroController::delete();
+        break;
 
-    case '/livro/delete';
-        AlunoController::delete();
-    break;
+    /* Rotas para empréstimos */
+    case '/emprestimo':
+        EmprestimoController::index();
+        break;
 
-    
-    /* Rotas para emprestimos */
+    case '/emprestimo/cadastro':
+        EmprestimoController::cadastro();
+        break;
 
-    case '/emprestimo';
-        AlunoController::index();
-    break;
-
-    case '/emprestimo/cadastro';
-        AlunoController::cadastro();
-    break;
-
-    case '/emprestimo/delete';
-        AlunoController::delete();
-    break;
-
-
+    case '/emprestimo/delete':
+        EmprestimoController::delete();
+        break;
 }

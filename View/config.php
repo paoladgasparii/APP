@@ -1,10 +1,15 @@
 <?php
 
-define('BASE_DIR', dirname(__FILE__, 2));
-define('VIEWS', BASE_DIR . '/App/View');
+/**
+ * Definição de constantes e variáveis de ambiente para configuração do sistema.
+ */
 
-$_ENV['db']['host'] = "localhost:3307";
-$_ENV['db']['user'] = "root";
-$_ENV['db']['pass'] = "etecjau";
-$_ENV['db']['database'] = "biblioteca";
+define('BASE_DIR', dirname(__FILE__, 2)); // Diretório base do projeto
 
+define('VIEWS', BASE_DIR . '/App/View'); // Caminho para a pasta de views
+
+// Configuração do banco de dados
+$_ENV['db']['host'] = "localhost:3307"; // Host do banco de dados
+$_ENV['db']['user'] = "root"; // Usuário do banco de dados
+$_ENV['db']['pass'] = "etecjau"; // Senha do banco de dados
+$_ENV['db']['database'] = "biblioteca"; // Nome do banco de dados
