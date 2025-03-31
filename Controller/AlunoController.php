@@ -55,5 +55,3 @@ final class AlunoController extends Controller
         parent::render('Aluno/form_aluno.php', $model);
     }
 }
-
-?>
