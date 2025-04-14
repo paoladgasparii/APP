@@ -59,3 +59,32 @@ Este projeto é um sistema de gerenciamento de biblioteca desenvolvido em PHP. E
 - **`switch($url)`**: Verifica a URL solicitada e chama o método apropriado de cada controlador, como `AlunoController`, `LoginController`, `AutorController`, etc.
 - **Rotas**: A aplicação tem rotas para login, alunos, autores, categorias, livros e empréstimos, com funcionalidades como cadastro, exclusão e listagem.
 
+## Como Rodar o Projeto
+
+1. **Clone o repositório**:
+
+    ```bash
+    git clone https://github.com/paoladgasparii/biblioteca.git
+    ```
+
+2. **Configuração do Banco de Dados**:
+
+    - Crie um banco de dados MySQL chamado `biblioteca`.
+    - Altere as credenciais de banco de dados no arquivo `config.php` conforme necessário:
+    
+    ```php
+    $_ENV['db']['host'] = "localhost:3307";
+    $_ENV['db']['user'] = "root";
+    $_ENV['db']['pass'] = "etecjau";
+    $_ENV['db']['database'] = "biblioteca";
+    ```
+
+3. **Instalação**:
+
+    - Certifique-se de ter o PHP instalado e um servidor como Apache ou Nginx configurado para rodar a aplicação.
+    
+    - Acesse o projeto pelo navegador:
+    
+    ```url
+    http://localhost/biblioteca
+    ```
