@@ -64,7 +64,7 @@ Este projeto é um sistema de gerenciamento de biblioteca desenvolvido em PHP. E
 1. **Clone o repositório**:
 
     ```bash
-    git clone https://github.com/paoladgasparii/biblioteca.git
+    https://github.com/paoladgasparii/APP.git
     ```
 
 2. **Configuração do Banco de Dados**:
