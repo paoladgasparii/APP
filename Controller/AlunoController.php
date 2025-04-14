@@ -20,16 +20,15 @@ final class AlunoController extends Controller
      * @return void
      */
 
-    public static function index() : void 
+    public static function index(): void
     {
         parent::isProtected();
 
         $model = new Aluno();
 
-        try{
+        try {
             $model->getAllRows();
-        }catch(Exception $e)
-        {
+        } catch (Exception $e) {
             $model->setError("Ocorreu um erro ao buscar os alunos:");
             $model->setError($e->getMessage());
         }
@@ -44,17 +43,15 @@ final class AlunoController extends Controller
      *
      * @return void
      */
-    
-    public static function cadastro() : void 
+
+    public static function cadastro(): void
     {
         parent::isProtected();
 
         $model = new Aluno();
 
-        try
-        {
-            if(parent::isPost())
-            {
+        try {
+            if (parent::isPost()) {
                 $model->Id = !empty($_POST['id']) ? $_POST['id'] : null;
                 $model->Nome = $_POST['nome'];
                 $model->RA = $_POST['ra'];
@@ -62,17 +59,33 @@ final class AlunoController extends Controller
                 $model->save();
 
                 parent::redirect("/aluno");
-            }else{
+            } else {
 
-                if(isset($_GET['id']))
-                {
-                    $model = $model->getById( (int) $_GET['id'] );
+                if (isset($_GET['id'])) {
+                    $model = $model->getById((int) $_GET['id']);
                 }
             }
-        } catch(Exception $e) {
+        } catch (Exception $e) {
             $model->setError($e->getMessage());
         }
 
         parent::render('Aluno/form_aluno.php', $model);
     }
-}
+
+    public static function delete(): void
+    {
+        parent::isProtected();
+
+        $model = new Aluno();
+
+        try {
+            $model->delete((int) $_GET['id']);
+            parent::redirect("/aluno");
+        } catch (Exception $e) {
+            $model->setError("Ocorreu um erro ao excluir o aluno:");
+            $model->setError($e->getMessage());
+        }
+
+        parent::render('Aluno/lista_aluno.php', $model);
+    }
+} // Fom da classe
