@@ -2,19 +2,19 @@
 
 namespace App\Controller;
 
-use App\Model\Autor;
+use App\Model\Usuario;
 use Exception;
 
 /**
- * Classe AutorController
- * Responsável por controlar as operações relacionadas aos autores.
+ * Classe UsuarioController
+ * Responsável por controlar as operações relacionadas aos usuários.
  */
 
-final class AutorController extends Controller
+final class UsuarioController extends Controller
 {
 
     /**
-     * Método responsável por listar todos os autores.
+     * Método responsável por listar todos os alunos.
      * Chama a função de busca no modelo e renderiza a lista.
      *
      * @return void
@@ -24,20 +24,20 @@ final class AutorController extends Controller
     {
         parent::isProtected();
 
-        $model = new Autor();
+        $model = new Usuario();
 
         try {
             $model->getAllRows();
         } catch (Exception $e) {
-            $model->setError("Ocorreu um erro ao buscar o autor:");
+            $model->setError("Ocorreu um erro ao buscar os usuários:");
             $model->setError($e->getMessage());
         }
 
-        parent::render('Autor/lista_autor.php', $model);
+        parent::render('Usuario/lista_usuario.php', $model);
     }
 
     /**
-     * Método responsável por cadastrar ou editar um autor.
+     * Método responsável por cadastrar ou editar um usuário.
      * Verifica se a requisição é do tipo POST para salvar os dados.
      * Caso contrário, verifica se há um ID para edição.
      *
@@ -54,11 +54,11 @@ final class AutorController extends Controller
             if (parent::isPost()) {
                 $model->Id = !empty($_POST['id']) ? $_POST['id'] : null;
                 $model->Nome = $_POST['nome'];
-                $model->Data_Nasc = $_POST['data_nasc'];
-                $model->CPF = $_POST['cpf'];
+                $model->Email = $_POST['email'];
+                $model->Senha = $_POST['senha'];
                 $model->save();
 
-                parent::redirect("/autor");
+                parent::redirect("/usuario");
             } else {
 
                 if (isset($_GET['id'])) {
@@ -69,23 +69,23 @@ final class AutorController extends Controller
             $model->setError($e->getMessage());
         }
 
-        parent::render('Autor/form_autor.php', $model);
+        parent::render('Usuario/form_usuario.php', $model);
     }
 
     public static function delete(): void
     {
         parent::isProtected();
 
-        $model = new Autor();
+        $model = new Usuario();
 
         try {
             $model->delete((int) $_GET['id']);
-            parent::redirect("/autor");
+            parent::redirect("/usuario");
         } catch (Exception $e) {
-            $model->setError("Ocorreu um erro ao excluir o autor:");
+            $model->setError("Ocorreu um erro ao excluir o usuário:");
             $model->setError($e->getMessage());
         }
 
-        parent::render('Autor/lista_autor.php', $model);
+        parent::render('Usuario/lista_usuario.php', $model);
     }
 } // Fom da classe
