@@ -33,8 +33,25 @@ final class LoginController
                     }
 
                     header("Location: /");
-                }
+                } else
+                $erro = "Email ou senha incorretos";
             }
+
+            if(isset($_COOKIE['sistema_biblioteca_usuario'])) 
+                $model->Email = $_COOKIE['sistema_biblioteca_usuario'];
+
+                include VIEWS . '/Login/form_login.php';
+        }
+
+        public static function logout(): void 
+        {
+            session_destroy();
+            header("Location: /login");
+        }
+
+        public static function getUsuario() : Login 
+        {
+            return unserialize(serialize($_SESSION['usuario_logado']));
         }
     }
 ?>
