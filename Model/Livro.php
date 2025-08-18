@@ -74,4 +74,15 @@ final class Livro extends Model
         return new LivroDAO()->selectById($id);
     }
 
-}
+    function getAllRows() : array
+    {
+        $this->rows = new LivroDAO()->select();
+
+        return $this-rows;
+    }
+
+    function delete(int $id) : bool
+    {
+        return new LivroDAO()->delete($id);
+    }
+  }

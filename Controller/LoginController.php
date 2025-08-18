@@ -54,4 +54,3 @@ final class LoginController
             return unserialize(serialize($_SESSION['usuario_logado']));
         }
     }
-?>

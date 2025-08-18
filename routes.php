@@ -1,9 +1,5 @@
 <?php
 
-/**
- * Define as rotas da aplicação e direciona para os controladores correspondentes.
- */
-
 use App\Controller\{
     AlunoController,
     InicialController,
@@ -16,84 +12,97 @@ use App\Controller\{
 
 $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
-switch ($url)
+//var_dump($url);
+
+switch($url)
 {
     case '/':
         InicialController::index();
-        break;
+    break;    
 
-    /* Rotas para login */
+    /**
+     * Rotas para Login
+     */
     case '/login':
         LoginController::index();
-        break;
+    break;
 
     case '/logout':
         LoginController::logout();
-        break;
+    break;
 
-    /* Rotas para alunos */
-    case '/aluno':
+    /**
+     * Rotas para alunos
+     */
+    case '/aluno':        
         AlunoController::index();
-        break;
+    break;
 
-    case '/cadastro':
     case '/aluno/cadastro':
         AlunoController::cadastro();
-        break;
+    break;
 
     case '/aluno/delete':
         AlunoController::delete();
-        break;
+    break;
 
-    /* Rotas para autores */
-    case '/autor':
+    /**
+     * Rotas para autores
+     */
+    case '/autor':        
         AutorController::index();
-        break;
+    break;
 
     case '/autor/cadastro':
         AutorController::cadastro();
-        break;
+    break;
 
     case '/autor/delete':
         AutorController::delete();
-        break;
+    break;
 
-    /* Rotas para categorias */
-    case '/categoria':
+    /**
+     * Rotas para categorias
+     */
+    case '/categoria':        
         CategoriaController::index();
-        break;
+    break;
 
     case '/categoria/cadastro':
         CategoriaController::cadastro();
-        break;
+    break;
 
     case '/categoria/delete':
         CategoriaController::delete();
-        break;
+    break;
 
-    /* Rotas para livros */
-    case '/livro':
+    /**
+     * Rotas para livros
+     */
+    case '/livro':        
         LivroController::index();
-        break;
+    break;
 
     case '/livro/cadastro':
         LivroController::cadastro();
-        break;
+    break;
 
     case '/livro/delete':
         LivroController::delete();
-        break;
-
-    /* Rotas para empréstimos */
-    case '/emprestimo':
+    break; 
+    
+    /**
+     * Rotas para Emprestimo
+     */
+    case '/emprestimo':        
         EmprestimoController::index();
-        break;
+    break;
 
-    case '/emprestimo/cadastro':
+    case '/emprestimo/cadastro':-
         EmprestimoController::cadastro();
-        break;
+    break;
 
     case '/emprestimo/delete':
         EmprestimoController::delete();
-        break;
+    break;  
 }
