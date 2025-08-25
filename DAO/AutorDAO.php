@@ -111,7 +111,7 @@
             // Retorna um array com as linhas retornadas da consulta. Observe que o
             // array é um array de objetos. Os objetos são do tipo stdClass e
             // foram criados automaticamente pelo método fetchAll do PDO.
-            return $stmt->fetchAll(DAO::FETCH_CLASS, "All\Model\Autor");
+            return $stmt->fetchAll(DAO::FETCH_CLASS, "App\Model\Autor");
          }
 
          /**Remove um registro da tabela pessoa do banco de dados.

@@ -35,6 +35,7 @@ switch($url)
      * Rotas para alunos
      */
     case '/aluno':        
+       // echo"Chegou na rota";
         AlunoController::index();
     break;
 

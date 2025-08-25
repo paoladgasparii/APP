@@ -9,7 +9,7 @@
   </head>
   <body>
     <div>
-        <?php include VIEWS . '/Include/menu.php' ?>
+        <?php include VIEWS . '/Includes/menu.php' ?>
         <h1>Lista de Autores</h1>
         <a href="/categoria/cadastro">Nova Categoria</a>
         <?= $model->getErrors() ?>
